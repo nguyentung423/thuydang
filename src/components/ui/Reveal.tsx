@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion, useAnimation, useInView, type Variants } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 interface RevealProps {
@@ -31,27 +31,27 @@ export default function Reveal({
   const getInitialTransform = () => {
     switch (direction) {
       case "up":
-        return { y: distance };
+        return { x: 0, y: distance };
       case "down":
-        return { y: -distance };
+        return { x: 0, y: -distance };
       case "left":
-        return { x: distance };
+        return { x: distance, y: 0 };
       case "right":
-        return { x: -distance };
+        return { x: -distance, y: 0 };
       default:
-        return { y: distance };
+        return { x: 0, y: distance };
     }
   };
 
-  const variants = {
+  const variants: Variants = {
     hidden: {
       opacity: 0,
       ...getInitialTransform(),
     },
     visible: {
       opacity: 1,
-      y: 0,
       x: 0,
+      y: 0,
       transition: {
         duration: 0.6,
         ease: "easeOut",
@@ -85,7 +85,7 @@ export function StaggerContainer({
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-10%" });
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 1 },
     visible: {
       opacity: 1,
@@ -95,9 +95,10 @@ export function StaggerContainer({
     },
   };
 
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+  const itemVariants: Variants = {
+    hidden: { x: 0, y: 20, opacity: 0 },
     visible: {
+      x: 0,
       y: 0,
       opacity: 1,
       transition: {
