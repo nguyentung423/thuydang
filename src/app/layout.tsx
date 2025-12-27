@@ -12,9 +12,9 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Đặng Văn Thùy | Trade Marketing Executive",
+  title: "Đặng Văn Thùy | Trade Marketing",
   description:
-    "Portfolio of Đặng Văn Thùy - Trade Marketing Executive specializing in Events, POSM, and Brand Activation campaigns.",
+    "Portfolio of Đặng Văn Thùy - Trade Marketing specializing in Events, POSM, and Brand Activation campaigns.",
 };
 
 export default function RootLayout({
